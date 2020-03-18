@@ -5,19 +5,19 @@ const movieAppReducer = (state = movies, action) => {
     switch (action.type) {
         case SEARCH:
             let term = action.text.text.toLowerCase().trim();
-            console.log(action.text.star)
-            return term.trim() ?  state.filter(function (movie) { return movie.name.toLowerCase().includes(term) & movie.rating >= action.text.star }) : movies
+            return    movies.filter(function (movie) { return movie.name.toLowerCase().includes(term) & movie.rating >= action.text.star })  
 
         case ADD_MOVIE:
-            return state = state.concat(action.movie)
+            return  movies = movies.concat(action.movie)
         case REMOVE_MOVIE:
-            return state = state.filter(movie => movie.id !== action.movie)
+            return movies =movies.filter(movie => movie.id !== action.movie)
         case EDIT_MOVIE:
-            if (action.movie.newTitle) { return state.map(movie => movie.id === action.movie.id ? { ...movie, name: action.movie.newTitle, editMode: !movie.editMode } : { ...movie }) }
-            else { return state.map(movie => movie.id === action.movie.id ? { ...movie, editMode: !movie.editMode } : { ...movie }) }
 
+            if (action.movie.newTitle) { return movies=movies.map(movie => movie.id === action.movie.id ? { ...movie, name: action.movie.newTitle, editMode: !movie.editMode } : { ...movie }) }
+            else { return movies= movies.map(movie => movie.id === action.movie.id ? { ...movie, editMode: !movie.editMode } : { ...movie }) }
+            
         default:
-            return state
+            return movies
     }
 }
 

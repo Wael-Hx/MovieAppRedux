@@ -3,6 +3,7 @@ import AM from './AddNewMovie'
 import { connect } from "react-redux"
 import { addMovie, removeMovie, searchForMovie, editMovie } from '../actions/Actions'
 import {Link} from 'react-router-dom'
+ 
 
 export class MovieContainer extends Component {
 
@@ -14,7 +15,8 @@ export class MovieContainer extends Component {
 
 
     handleDesc =()=>{
-        this.props.searchForMovie({ text: '', star:1 });
+     this.props.searchForMovie({ text: '', star:1 });
+       
     }
 
 
