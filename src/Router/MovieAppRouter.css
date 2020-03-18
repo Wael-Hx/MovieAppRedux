@@ -1,0 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Sen&display=swap);
+
+.description{
+    display: flex;
+    align-items: flex-start;
+    width: 66em;
+    margin: auto;
+}
+.movieInfo{
+    margin: 8px 25px 0 0;
+}
+.synopsis p{
+    font-family: Sen;
+    color: lavender;
+}
+.movieInfo h2{
+    color: lavender;
+}
