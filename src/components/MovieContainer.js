@@ -13,10 +13,16 @@ export class MovieContainer extends Component {
     }
 
 
+    handleDesc =()=>{
+        this.props.searchForMovie({ text: '', star:1 });
+    }
+
+
     search = (e) => { e.preventDefault() }
     handleChange = (e) => {
-        this.setState({ input: e.target.value })
-        this.props.searchForMovie({ text: e.target.value, star: this.state.star });
+        this.props.searchForMovie({ text: e.target.value, star: this.state.star })
+        this.setState({ input: e.target.value } )
+       /*  this.props.searchForMovie({ text: e.target.value, star: this.state.star }); */
     }
     totalRating = (e) => {
         this.setState({
@@ -47,7 +53,7 @@ export class MovieContainer extends Component {
             <>
                 {/*  the header */}
                 <form className='searchBar' onSubmit={this.search}>
-                    <input type='text' className='search' onChange={this.handleChange} />
+                    <input type='text' className='search' value={this.state.input} onChange={this.handleChange} />
                     <div className='ratings'>
                         {[...Array(5)].map((star, i) =>
                             <label key={i + 1}>
@@ -72,7 +78,7 @@ export class MovieContainer extends Component {
                                     </label>
                                 )}
                                 <div className='remove-edit' >
-                                <Link to={'/'+movie.name.replace(/\s/g, '')}><span className='info' ><i className='fa fa-info-circle' aria-hidden="true" ></i> </span> </Link>
+                                <Link to={'/'+movie.name.replace(/\s/g, '')} onClick={this.handleDesc}   ><span className='info' ><i className='fa fa-info-circle' aria-hidden="true" ></i> </span> </Link>
                                     <span className='remove' onClick={() => this.handleRemove(movie.id)} ><i className="fa fa-trash" aria-hidden="true"></i></span>
                                     <span className='edit' onClick={() => this.handleEdit(movie.id)} ><i className="fa fa-pencil-square-o" aria-hidden="true"></i></span>
                                 </div>
